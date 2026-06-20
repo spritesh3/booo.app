@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Boo 🌹</title>
+  <meta name="description" content="A special romantic birthday surprise created just for you, Boo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src=".vscode/Song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Floating Particles Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+<!-- Floating Hearts -->
+   <div id="heartsContainer"></div>
+
+   <!-- Rose Petals -->
+   <div id="petalsContainer"></div>
+
+   <!-- Fireworks Canvas -->
+   <canvas id="fireworksCanvas"></canvas>
+
+  <!-- ===== SECTION 1: HERO ===== -->
+  <section id="hero" class="section hero-section">
+    <div class="hero-content">
+      <p class="hero-subtitle fade-in-up delay-1">For my precious</p>
+      <h1 class="hero-name glow-text fade-in-up delay-2">Boo</h1>
+      <div class="divider fade-in-up delay-3">
+        <span class="divider-line"></span>
+        <span class="divider-heart">♥</span>
+        <span class="divider-line"></span>
+      </div>
+      <h2 class="hero-title fade-in-up delay-4">Happy Birthday</h2>
+      <p class="hero-tagline fade-in-up delay-5">You make every day feel like magic ✨</p>
+      <button class="cta-btn fade-in-up delay-6" id="enterBtn" onclick="scrollToMessage()">
+        Open Your Surprise
+        <span class="btn-sparkle">💖</span>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ===== SECTION 2: LOVE MESSAGE ===== -->
+  <section id="message" class="section message-section">
+    <div class="section-inner">
+      <div class="message-card glass-card">
+        <div class="card-decoration top-left">❤️</div>
+        <div class="card-decoration top-right">❤️</div>
+        <h3 class="section-label">A Letter From My Heart</h3>
+        <div class="message-text" id="messageText">
+          <p class="typewriter" id="typewriterText"></p>
+        </div>
+        <div class="message-signature">
+          <span class="signature-line">With all my love,</span>
+          <span class="signature-name">Forever Yours 💕</span>
+        </div>
+        <div class="card-decoration bottom-left">❤️</div>
+        <div class="card-decoration bottom-right">❤️</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== SECTION 3: BIRTHDAY CAKE ===== -->
+  <section id="cake" class="section cake-section">
+    <div class="section-inner">
+      <h2 class="section-title">Make a Wish, Beautiful 🕯️</h2>
+      <p class="section-subtitle" id="blowStatus">🎤 Tap the button below, then blow into your mic!</p>
+      <button class="cta-btn" id="startMicBtn" onclick="startMicDetection()" style="margin-bottom:24px;">
+        🎤 Start Blowing
+      </button>
+
+      <div class="cake-wrapper">
+        <!-- Candles -->
+        <div class="candles-row" id="candlesRow">
+          <div class="candle" data-index="0">
+            <div class="flame" id="flame0"></div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle" data-index="1">
+            <div class="flame" id="flame1"></div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle" data-index="2">
+            <div class="flame" id="flame2"></div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle" data-index="3">
+            <div class="flame" id="flame3"></div>
+            <div class="candle-body"></div>
+          </div>
+          <div class="candle" data-index="4">
+            <div class="flame" id="flame4"></div>
+            <div class="candle-body"></div>
+          </div>
+        </div>
+
+        <!-- Cake Layers -->
+        <div class="cake">
+          <div class="cake-top-layer"></div>
+          <div class="cake-middle-layer"></div>
+          <div class="cake-bottom-layer"></div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+
+      <div class="wish-message" id="wishMessage" style="display:none;">
+        <p>🌟 Your wish has been sent to the stars! 🌟</p>
+        <p>May all your dreams come true, my love 💫</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: REASONS I LOVE YOU ===== -->
+  <section id="reasons" class="section reasons-section">
+    <div class="section-inner">
+      <h2 class="section-title">Reasons I Love You 💝</h2>
+      <div class="reasons-grid" id="reasonsGrid">
+        <div class="reason-card glass-card" data-delay="0">
+          <div class="reason-icon">✨</div>
+          <p>Your smile lights up every room you walk into</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="100">
+          <div class="reason-icon">🌹</div>
+          <p>The way you laugh makes my heart skip a beat</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="200">
+          <div class="reason-icon">💫</div>
+          <p>You make ordinary moments feel extraordinary</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="300">
+          <div class="reason-icon">🌙</div>
+          <p>You're my favorite thought every morning and every night</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="400">
+          <div class="reason-icon">💕</div>
+          <p>Your kindness and warmth make the world a better place</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="400">
+          <div class="reason-icon">🤎</div>
+          <p>Your brown eyes — warm, deep, and endlessly beautiful. I could look into them forever</p>
+        </div>
+        <div class="reason-card glass-card" data-delay="500">
+          <div class="reason-icon">🌟</div>
+          <p>Simply because you're you — endlessly magical</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: LETTER BOX ===== -->
+  <section id="finale" class="section ringbox-section">
+    <div class="section-inner">
+      <p class="ringbox-hint fade-in-up" id="ringHint">Tap the envelope to open it 💌</p>
+
+      <div class="envelope-scene" id="envelopeScene" onclick="openEnvelope()">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <div class="envelope-body">
+            <span class="envelope-text">Tap to open</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="love-message" id="loveMessage">
+        <p class="love-line1">I Love You</p>
+        <p class="love-line2">My Boo 💕</p>
+        <p class="love-line3">You are my forever & always ♾️</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Popup Modal -->
+  <div class="photo-modal" id="photoModal" onclick="closePhotoModal()">
+    <div class="photo-modal-content" onclick="event.stopPropagation()">
+      <button class="photo-modal-close" onclick="closePhotoModal()">✕</button>
+      <img class="photo-modal-img" id="photoModalImg" src="" alt="Surprise" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
